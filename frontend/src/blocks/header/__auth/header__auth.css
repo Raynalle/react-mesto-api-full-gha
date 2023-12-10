@@ -1,0 +1,10 @@
+.header__auth {
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 747px) {
+    .header__auth {
+        flex-direction: column;
+    }
+}

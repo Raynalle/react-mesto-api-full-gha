@@ -1,0 +1,11 @@
+.element {
+  max-width: 282px;
+  max-height: 361px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  position: relative;
+}

@@ -1,0 +1,38 @@
+.profile__avatar {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.profile__avatar-container {
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+
+.profile__avatar-change {
+  position: absolute;
+  background-image: url(../../../images/pensil.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 26px;
+  height: 26px;
+  display: none;
+  transition: display 0.3s ease;
+  top: 47px;
+  left: 47px;
+}
+
+.profile__avatar-container:hover > .profile__avatar {
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.profile__avatar-container:hover > .profile__avatar-change {
+  display: block;
+  transition: display 0.3s ease;
+}

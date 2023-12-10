@@ -9,8 +9,8 @@
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 158.160.136.138
 
-Frontend https://...
+Frontend https://mesto-raynalle.nomoredomainsmonster.ru
 
-Backend https://...
+Backend https://api.mesto-raynalle.nomoredomainsmonster.ru

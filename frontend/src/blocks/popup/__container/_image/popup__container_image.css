@@ -1,0 +1,8 @@
+.popup__container_image {
+  max-width: 75vw;
+  padding: 0;
+  background: none;
+  justify-content: normal;
+  width: min-content;
+  height: min-content;
+}

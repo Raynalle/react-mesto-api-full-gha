@@ -1,0 +1,7 @@
+.popup__form-profile {
+  display: flex;
+  flex-direction: column;
+  max-width: 358px;
+  justify-content: space-between;
+  margin: 0;
+}

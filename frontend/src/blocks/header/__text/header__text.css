@@ -1,0 +1,13 @@
+.header__text {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #fff;
+    margin-right: 24px;
+}
+
+@media screen and (max-width: 747px){
+    .header__text {
+        font-size: 12px;
+    }
+}

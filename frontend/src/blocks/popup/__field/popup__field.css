@@ -1,0 +1,15 @@
+.popup__field {
+  box-sizing: border-box;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 0 0 10px 0;
+  color: #000;
+  vertical-align: bottom;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.popup__field.invalid {
+  border-bottom: 1px solid #f00;
+}
