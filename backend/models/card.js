@@ -13,7 +13,7 @@ const cardSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: (string) => {
-        validator.isUrl(string);
+        validator.isURL(string);
       },
     },
   },
@@ -23,7 +23,7 @@ const cardSchema = new mongoose.Schema({
     ref: 'user',
   },
   likes: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.Array,
     default: [],
     ref: 'user',
   },

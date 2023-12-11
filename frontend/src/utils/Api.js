@@ -1,4 +1,5 @@
 class Api {
+
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
     this._headers = headers;
@@ -81,7 +82,7 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: "https://api.mesto-raynalle.nomoredomainsmonster.ru/",
+  baseUrl: "https://api.mesto-raynalle.nomoredomainsmonster.ru",
   headers: {
     Authorization: `Bearer ${localStorage.getItem('jwt')}`,
     "Content-Type": "application/json",

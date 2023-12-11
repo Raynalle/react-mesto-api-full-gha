@@ -5,7 +5,7 @@ function checkResponse(response) {
     return Promise.reject(`Ошибка: ${response.status}`);
 }
 
-export const BaseUrl = " https://auth.nomoreparties.co";
+export const BaseUrl = "https://api.mesto-raynalle.nomoredomainsmonster.ru";
 
 export function registerUser(email, password) {
     return fetch(`${BaseUrl}/signup`, {

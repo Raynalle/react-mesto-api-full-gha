@@ -96,7 +96,7 @@ function App() {
       auth.getToken(jwt).then((response) => {
         if(response) {
           setIsLoggedIn(true);
-          setEmailLogin(response.data.email);
+          setEmailLogin(response.email);
         }
       })
       .catch((error) => {
@@ -116,7 +116,7 @@ function App() {
       Promise.all([api.getUserInfo(), api.getCards()])
       .then(([user, initCards]) => {
         setCurrentUser(user);
-        setCards(initCards);
+        setCards(initCards.data);
       })
 
       .catch((error) => {
@@ -186,7 +186,8 @@ function App() {
     api
       .createCard({ name, link })
       .then((newCard) => {
-        setCards([newCard, ...cards]);
+        console.log(newCard)
+        setCards([newCard.data, ...cards]);
         closeAllPopups();
       })
       .catch((error) => {
@@ -198,7 +199,7 @@ function App() {
   };
 
   const handleCardLike = (card) => {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {

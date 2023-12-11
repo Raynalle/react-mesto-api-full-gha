@@ -5,13 +5,15 @@ const BadRequest = require('../errors/BadRequest');
 
 const createCard = (req, res, next) => {
   const { name, link } = req.body;
-  const owner = req.user_id;
+  console.log(req);
+  const owner = req.user._id;
 
   Card.create({ name, link, owner })
     .then((card) => {
       res.status(201).send({ data: card });
     })
     .catch((err) => {
+      console.log(err)
       if (err.name === 'ValidationError') {
         next(new BadRequest('Переданы некорректные данные'));
       } else {
@@ -27,15 +29,14 @@ const getCard = (req, res, next) => {
 };
 
 const deleteCard = (req, res, next) => {
-  Card.findById(req.params.cardId)
+  Card.findOneAndDelete(req.params.cardId)
     .then((card) => {
       if (!card) {
         throw new NotFound('карточка с таким id не найдена');
       }
-      if (card.owner._id.toString() !== req.user._id.toString()) {
+      if (card.owner.toString() !== req.user._id.toString()) {
         throw new Forbidden('Вы не можете удалить карточку другого пользователя');
       }
-      return card.remove();
     })
     .then(() => res.status(200).json({ message: 'Карточка удалена' }))
     .catch(next);

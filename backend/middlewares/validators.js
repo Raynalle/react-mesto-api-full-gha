@@ -2,7 +2,7 @@ const { celebrate, Joi } = require('celebrate');
 const validator = require('validator');
 
 const isUrl = (link) => {
-  const result = validator.isUrl(link);
+  const result = validator.isURL(link);
   if (result) {
     return link;
   }
