@@ -5,7 +5,6 @@ const BadRequest = require('../errors/BadRequest');
 
 const createCard = (req, res, next) => {
   const { name, link } = req.body;
-  console.log(req);
   const owner = req.user._id;
 
   Card.create({ name, link, owner })
@@ -13,7 +12,6 @@ const createCard = (req, res, next) => {
       res.status(201).send({ data: card });
     })
     .catch((err) => {
-      console.log(err)
       if (err.name === 'ValidationError') {
         next(new BadRequest('Переданы некорректные данные'));
       } else {

@@ -5,7 +5,7 @@ function checkResponse(response) {
     return Promise.reject(`Ошибка: ${response.status}`);
 }
 
-export const BaseUrl = "https://api.mesto-raynalle.nomoredomainsmonster.ru";
+export const BaseUrl = " https://api.mesto-raynalle.nomoredomainsmonster.ru";
 
 export function registerUser(email, password) {
     return fetch(`${BaseUrl}/signup`, {
@@ -33,8 +33,8 @@ export function getToken(jwt) {
     return fetch(`${BaseUrl}/users/me`, {
         method: "GET",
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${jwt}`,
+          "Content-Type": "application/json",
         },
     })
     .then(checkResponse)

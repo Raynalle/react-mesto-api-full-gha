@@ -47,7 +47,7 @@ function App() {
     about: "",
     avatar: "",
     _id: "",
-    cohort: "",
+    email: ""
   });
 
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
@@ -186,7 +186,6 @@ function App() {
     api
       .createCard({ name, link })
       .then((newCard) => {
-        console.log(newCard)
         setCards([newCard.data, ...cards]);
         closeAllPopups();
       })
