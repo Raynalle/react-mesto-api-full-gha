@@ -13,6 +13,7 @@ const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const NotFound = require('./errors/NotFound');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const serverErrors = require('./middlewares/errors');
 
 const { PORT = 3000 } = process.env;
 
@@ -67,6 +68,7 @@ app.use('*', (req, res, next) => {
 app.use(errorLogger);
 
 app.use(errors());
+app.use(serverErrors);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);

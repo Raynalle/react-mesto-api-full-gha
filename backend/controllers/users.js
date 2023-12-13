@@ -33,7 +33,11 @@ const createUser = (req, res, next) => {
       email: req.body.email,
       password: hash,
     }))
-    .then((user) => res.status(201).send({ data: user }))
+    .then((user) => {
+      const data = user.toObject();
+      delete data.password;
+      res.status(201).send(data);
+    })
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequest('Ошибка валидации'));
@@ -71,7 +75,7 @@ const login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        process.env.jwt_secret,
+        process.env.NODE_ENV === 'production' ? process.env.jwt_secret : 'dev-secret',
         {
           expiresIn: '7d',
         },
