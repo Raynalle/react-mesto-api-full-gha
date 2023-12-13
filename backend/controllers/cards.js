@@ -26,18 +26,20 @@ const getCard = (req, res, next) => {
     .catch((err) => next(err));
 };
 
-const deleteCard = (req, res, next) => {
-  Card.findOneAndDelete(req.params.cardId)
-    .then((card) => {
-      if (!card) {
-        throw new NotFound('карточка с таким id не найдена');
-      }
-      if (card.owner.toString() !== req.user._id.toString()) {
-        throw new Forbidden('Вы не можете удалить карточку другого пользователя');
-      }
-    })
-    .then(() => res.status(200).json({ message: 'Карточка удалена' }))
-    .catch(next);
+const deleteYourCard = (req, res, next) => {
+  Card.findById(req.params.cardId).then((card) => {
+    if (!card) {
+      next(new NotFound('карточка с таким id не найдена'));
+      return;
+    }
+
+    if (card.owner.toString() !== req.user._id.toString()) {
+      next(new Forbidden('Вы не можете удалить карточку другого пользователя'));
+      return;
+    }
+
+    Card.deleteOne(card).then(() => res.status(200).json({ message: 'Карточка удалена' })).catch(next);
+  });
 };
 
 const likeCard = (req, res, next) => {
@@ -85,5 +87,5 @@ const dislikeCard = (req, res, next) => {
 };
 
 module.exports = {
-  createCard, getCard, deleteCard, likeCard, dislikeCard,
+  createCard, getCard, deleteYourCard, likeCard, dislikeCard,
 };

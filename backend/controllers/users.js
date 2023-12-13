@@ -71,7 +71,7 @@ const login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        'some-secret-key',
+        process.env.jwt_secret,
         {
           expiresIn: '7d',
         },
