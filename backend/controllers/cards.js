@@ -38,8 +38,12 @@ const deleteYourCard = (req, res, next) => {
       return;
     }
 
-    Card.deleteOne(card).then(() => res.status(200).json({ message: 'Карточка удалена' })).catch(next);
-  });
+    Card.deleteOne(card)
+      .then(() => res.status(200).json({ message: 'Карточка удалена' }));
+  })
+    .catch((err) => {
+      next(err);
+    });
 };
 
 const likeCard = (req, res, next) => {
